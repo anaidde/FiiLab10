@@ -1,9 +1,12 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameServer {
     public static final int PORT = 8310;
+    private static List<ClientThread> clients = new ArrayList();
     public GameServer() throws IOException {
         ServerSocket serverSocket = null;
         try {
@@ -18,5 +21,9 @@ public class GameServer {
         } finally {
             serverSocket.close();
         }
+    }
+
+    public static List<ClientThread> getClients() {
+        return clients;
     }
 }
